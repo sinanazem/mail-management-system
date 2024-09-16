@@ -1,0 +1,6 @@
+streamlit==1.37.1
+wikipedia==1.4.0
+streamlit-searchbox==0.1.15
+langchain-core==0.2.39
+python-dotenv==1.0.1
+langchain-openai==0.1.23
