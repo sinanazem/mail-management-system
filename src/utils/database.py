@@ -3,9 +3,10 @@ import psycopg2
 from psycopg2 import sql
 from datetime import datetime
 from src.utils.enums import ScheduleStatus
+import os
 
 class DatabaseManager:
-    def __init__(self, dbname, user, password, host='localhost', port=5432):
+    def __init__(self, dbname, user, password, host=os.getenv("POSTGRES_HOST"), port=5432):
         self.conn = psycopg2.connect(
             dbname=dbname,
             user=user,

@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  scheduler:
+    build: .
+    command: python src/run.py  # This is the background process that must always run
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+
+    depends_on:
+      - postgres
+    restart: always
+
+  streamlit:
+    build: .
+    command: streamlit run src/app.py  # The Streamlit UI application
+    ports:
+      - "8501:8501"  # Streamlit's default port
+    depends_on:
+      - scheduler
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    restart: always
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    ports:
+      - "5432:5432"
+    restart: always

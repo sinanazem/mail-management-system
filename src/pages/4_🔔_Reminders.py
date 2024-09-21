@@ -2,8 +2,15 @@ import streamlit as st
 from datetime import datetime
 import streamlit as st
 from src.utils.database import DatabaseManager
+import os
 
-db = DatabaseManager(dbname="email", user="postgres", password="postgres")
+
+db = DatabaseManager(
+    dbname=os.getenv("POSTGRES_DB"),
+    user=os.getenv("POSTGRES_USER"),
+    password=os.getenv("POSTGRES_PASSWORD")
+    )
+
 def main():
     st.title("🔔 Reminders")
 

@@ -1,7 +1,7 @@
 import streamlit as st
 from src.utils.database import DatabaseManager
 import os
-from PIL import Image
+
 import base64
 from PIL import Image
 import wikipedia
@@ -9,7 +9,11 @@ from streamlit_searchbox import st_searchbox
 
 
 
-db = DatabaseManager(dbname="email", user="postgres", password="postgres")
+db = DatabaseManager(
+    dbname=os.getenv("POSTGRES_DB"),
+    user=os.getenv("POSTGRES_USER"),
+    password=os.getenv("POSTGRES_PASSWORD")
+    )
 
 
 

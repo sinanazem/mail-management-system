@@ -1,9 +1,13 @@
 import streamlit as st
 from datetime import datetime, timedelta
 from src.utils.database import DatabaseManager
-
+import os
 # Initialize the DatabaseManager
-db = DatabaseManager(dbname="email", user="postgres", password="postgres")
+db = DatabaseManager(
+    dbname=os.getenv("POSTGRES_DB"),
+    user=os.getenv("POSTGRES_USER"),
+    password=os.getenv("POSTGRES_PASSWORD")
+    )
 
 def main():
     st.title("✉️ Send Email")

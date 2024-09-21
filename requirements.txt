@@ -4,3 +4,5 @@ streamlit-searchbox==0.1.15
 langchain-core==0.2.39
 python-dotenv==1.0.1
 langchain-openai==0.1.23
+loguru==0.7.2
+psycopg2-binary==2.9.9

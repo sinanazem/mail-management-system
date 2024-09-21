@@ -2,8 +2,14 @@ import streamlit as st
 from datetime import datetime
 from src.utils.enums import ScheduleStatus  # Ensure this import works
 from src.utils.database import DatabaseManager
+import os
 
-db_manager = DatabaseManager(dbname="email", user="postgres", password="postgres")
+
+db_manager = DatabaseManager(
+    dbname=os.getenv("POSTGRES_DB"),
+    user=os.getenv("POSTGRES_USER"),
+    password=os.getenv("POSTGRES_PASSWORD")
+    )
 
 # Streamlit App for Adding Templates
 def main():

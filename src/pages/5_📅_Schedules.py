@@ -4,8 +4,14 @@ from src.utils.database import DatabaseManager
 # from src.utils.helpers import humanize_date
 from src.utils.enums import ScheduleStatus
 
-# Initialize the DatabaseManager
-db = DatabaseManager(dbname="email", user="postgres", password="postgres")
+import os
+
+
+db = DatabaseManager(
+    dbname=os.getenv("POSTGRES_DB"),
+    user=os.getenv("POSTGRES_USER"),
+    password=os.getenv("POSTGRES_PASSWORD")
+    )
 
 def get_status_color(status):
     return {
