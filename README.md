@@ -18,7 +18,7 @@ To get started with the Email Management App, follow these steps:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/YOUR_USERNAME/email-management-app.git
+    git clone https://github.com/sinanazem/mail-management-system.git
     ```
 
 2. Navigate to the project directory:
